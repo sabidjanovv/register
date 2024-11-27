@@ -56,101 +56,156 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white rounded-lg shadow-md p-8 w-full max-w-md">
-        <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
+    <div className="min-h-screen flex items-center justify-center bg-teal-400">
+      <div className="bg-white rounded-xl shadow-lg w-full max-w-sm p-6">
+        <h2 className="text-2xl font-semibold text-center text-teal-600 mb-4">
           Register Here
         </h2>
+
         <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
-          {/* Input Fields */}
-          <input
-            type="text"
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-            placeholder="First Name"
-            className="block w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-          <input
-            type="text"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
-            placeholder="Last Name"
-            className="block w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            placeholder="Username"
-            className="block w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="Password"
-            className="block w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-          <select
-            name="country"
-            value={formData.country}
-            onChange={handleChange}
-            className="block w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          >
-            <option value="">Select a Country</option>
-            <option value="USA">USA</option>
-            <option value="UK">UK</option>
-            <option value="Canada">Canada</option>
-            <option value="India">India</option>
-          </select>
-          {/* Gender */}
-          <div className="flex justify-around">
-            <label className="flex items-center">
-              <input
-                type="radio"
-                name="gender"
-                value="Male"
-                checked={formData.gender === "Male"}
-                onChange={handleChange}
-                className="mr-2"
-              />
-              Male
-            </label>
-            <label className="flex items-center">
-              <input
-                type="radio"
-                name="gender"
-                value="Female"
-                checked={formData.gender === "Female"}
-                onChange={handleChange}
-                className="mr-2"
-              />
-              Female
-            </label>
+          {/* First Name */}
+          <div>
+            <input
+              type="text"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              placeholder="First Name"
+              className="w-full px-4 py-3 border rounded-full shadow-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"
+            />
+            {errors.firstName && (
+              <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
+            )}
           </div>
-          <input
-            type="date"
-            name="birthdate"
-            value={formData.birthdate}
-            onChange={handleChange}
-            className="block w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-          <input
-            type="text"
-            name="phoneNumber"
-            value={formData.phoneNumber}
-            onChange={handleChange}
-            placeholder="Phone Number"
-            className="block w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
+
+          {/* Last Name */}
+          <div>
+            <input
+              type="text"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+              placeholder="Last Name"
+              className="w-full px-4 py-3 border rounded-full shadow-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"
+            />
+            {errors.lastName && (
+              <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
+            )}
+          </div>
+
+          {/* Username */}
+          <div>
+            <input
+              type="text"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+              placeholder="Username"
+              className="w-full px-4 py-3 border rounded-full shadow-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"
+            />
+            {errors.username && (
+              <p className="text-red-500 text-sm mt-1">{errors.username}</p>
+            )}
+          </div>
+
+          {/* Password */}
+          <div>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Password"
+              className="w-full px-4 py-3 border rounded-full shadow-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"
+            />
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+            )}
+          </div>
+
+          {/* Country */}
+          <div>
+            <select
+              name="country"
+              value={formData.country}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border rounded-full shadow-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"
+            >
+              <option value="">Select a Country</option>
+              <option value="USA">USA</option>
+              <option value="UK">UK</option>
+              <option value="Canada">Canada</option>
+              <option value="India">India</option>
+            </select>
+            {errors.country && (
+              <p className="text-red-500 text-sm mt-1">{errors.country}</p>
+            )}
+          </div>
+
+          {/* Gender */}
+          <div>
+            <div className="flex gap-4 justify-between">
+              <label className="flex items-center">
+                <input
+                  type="radio"
+                  name="gender"
+                  value="Male"
+                  checked={formData.gender === "Male"}
+                  onChange={handleChange}
+                  className="mr-2"
+                />
+                Male
+              </label>
+              <label className="flex items-center">
+                <input
+                  type="radio"
+                  name="gender"
+                  value="Female"
+                  checked={formData.gender === "Female"}
+                  onChange={handleChange}
+                  className="mr-2"
+                />
+                Female
+              </label>
+            </div>
+            {errors.gender && (
+              <p className="text-red-500 text-sm mt-1">{errors.gender}</p>
+            )}
+          </div>
+
+          {/* Birthdate */}
+          <div>
+            <input
+              type="date"
+              name="birthdate"
+              value={formData.birthdate}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border rounded-full shadow-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"
+            />
+            {errors.birthdate && (
+              <p className="text-red-500 text-sm mt-1">{errors.birthdate}</p>
+            )}
+          </div>
+
+          {/* Phone Number */}
+          <div>
+            <input
+              type="text"
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handleChange}
+              placeholder="Phone Number"
+              className="w-full px-4 py-3 border rounded-full shadow-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"
+            />
+            {errors.phoneNumber && (
+              <p className="text-red-500 text-sm mt-1">{errors.phoneNumber}</p>
+            )}
+          </div>
+
           {/* Submit Button */}
           <button
             type="submit"
-            className="block w-full bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full bg-teal-500 text-white py-3 rounded-full shadow-lg hover:bg-teal-600 focus:ring-2 focus:ring-teal-500 transition-all"
           >
             Register
           </button>
