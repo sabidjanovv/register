@@ -3,6 +3,8 @@ import { v4 as uuidv4 } from "uuid";
 import { PatternFormat } from "react-number-format";
 import { COUNTRIES } from "../static/countries";
 import { RxAvatar } from "react-icons/rx";
+import { toast } from "react-toastify";
+
 
 const countries = COUNTRIES;
 
@@ -125,14 +127,16 @@ const Main = () => {
       avatar: preview || null,
     };
 
-    if (edit) {
-      setData((prev) =>
-        prev.map((item) => (item.id === edit.id ? newUser : item))
-      );
-      setEdit(null);
-    } else {
-      setData((prev) => [...prev, newUser]);
-    }
+     if (edit) {
+       setData((prev) =>
+         prev.map((item) => (item.id === edit.id ? newUser : item))
+       );
+       setEdit(null);
+       toast.success("User updated successfully!");
+     } else {
+       setData((prev) => [...prev, newUser]);
+       toast.success("User added successfully!");
+     }
 
     setUsername("");
     setBirthdate("");
@@ -145,10 +149,10 @@ const Main = () => {
     lname.current.value = "";
   };
 
-  const handleAvatarUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) setAvatar(file);
-  };
+  // const handleAvatarUpload = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) setAvatar(file);
+  // };
 
   const handleDelete = (id) => {
     if (confirm("Are you sure?")) {
